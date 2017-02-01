@@ -1,13 +1,18 @@
 language: android
 android:
- components:
-    - tools
-    - build-tools-24.0.3
-    - android-24
-    - extra-android-m2repository
-
+  components:
+  - tools
+  - build-tools-24.0.3
+  - android-24
+  - extra-android-m2repository
 jdk: oraclejdk8
-
-sudo : required
-
-script: ./gradlew clean build
+sudo: required
+script: "./gradlew clean build"
+deploy:
+  provider: releases
+  api_key:
+    secure: g9XqVqbZzDZ+950b+cTloZEcK23nhAX4GZdV3YUgFMaTiIoaNs+aUgfp38k4OEY8TtRHfUyNopzwGJZM2zuuF1p3/SK0P04QUnVn+Ww/XTASqFkSd6jWQFlTcgyyCvlLL8F5MDMhrxiPnxzaHQaITn5dI8tdrFMSbfYMMdMR8bC05wsXaOyTQiIn+Hlo+DMos2yJy6wqOpbjHyNR3oDFfNAgnasT6fE6tqGQgrd0F0HpVoGhjkC8IdxJJa9NSexN55wUbNEf3KqvwR2Ad3HKFacL5FqA/CBx3V0w/ycw22SKwFSsoBS0vUqvS0Y3395WzsVNs6wR8rK/NP/mAYmPsCebRd7tEVzvEDfNLFc6iRPAEaV1cDwgChiae/9T9TX/v0vSRVs16DygrSFb5gnikzy3mFrhpOClguil1jpFsiW8nlBbXcO/bEv+GwLCaHosRVLHqytNXRe3H0tFAiETj30T1wB1kUgXmOvRogN0znUoAV9JpSGEATKbmRyZ8HJHUAM02z1UZi8osPewoePyIzXhVnEHthl/n3ohybfQXUCOAEpFbVDAAFX8dHL/m8RoBYaig6zi1iNw8FwYtp0Y0G0AWjmHaFzvOqWex15qzV2cjzWMGuQ90LwU25mKMCNJAINja/ziaIKP/r14NimoEPzivEff7Uzyn/hFyF/cqHI=
+  file: k9mail/build/outputs/apk/k9mail-debug.apk
+  skip_cleanup: true
+  on:
+    tags: true
